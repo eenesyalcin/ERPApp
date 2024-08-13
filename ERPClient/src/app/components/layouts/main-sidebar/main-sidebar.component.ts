@@ -3,6 +3,7 @@ import { Menus } from '../../../menus';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MenuPipe } from '../../../pipes/menu.pipe';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-main-sidebar',
@@ -15,5 +16,9 @@ export class MainSidebarComponent {
 
   search: string = "";
   menus = Menus;
+
+  constructor (
+    public auth: AuthService
+  ) {}
 
 }
