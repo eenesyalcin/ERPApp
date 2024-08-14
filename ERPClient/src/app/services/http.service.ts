@@ -19,8 +19,7 @@ export class HttpService {
   post<T>(apiUrl: string, body: any, callBack: (res: T) => void, errorCallBack?: () => void){
     this.http.post<ResultModel<T>>(`${api}/${apiUrl}`, body, {
       headers: {
-        // "Authorization": "Bearer" + this.auth.token   --->   YANLIŞ FORMAT
-        'Authorization': `Bearer ${this.auth.token}`
+        "Authorization": "Bearer " + this.auth.token
       }
     }).subscribe({
       next: (res) => {
@@ -38,5 +37,3 @@ export class HttpService {
   }
 
 }
-
-
