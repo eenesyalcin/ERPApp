@@ -13,3 +13,4 @@ C:\ERPApp\ERPServer\ERPServer.Application\obj\Debug\net8.0\ERPServer.Application
 C:\ERPApp\ERPServer\ERPServer.Application\obj\Debug\net8.0\refint\ERPServer.Application.dll
 C:\ERPApp\ERPServer\ERPServer.Application\obj\Debug\net8.0\ERPServer.Application.pdb
 C:\ERPApp\ERPServer\ERPServer.Application\obj\Debug\net8.0\ref\ERPServer.Application.dll
+C:\ERPApp\ERPServer\ERPServer.Application\obj\Debug\net8.0\ERPServer.Application.sourcelink.json

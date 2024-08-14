@@ -10,3 +10,4 @@ C:\ERPApp\ERPServer\ERPServer.Domain\obj\Debug\net8.0\ERPServer.Domain.dll
 C:\ERPApp\ERPServer\ERPServer.Domain\obj\Debug\net8.0\refint\ERPServer.Domain.dll
 C:\ERPApp\ERPServer\ERPServer.Domain\obj\Debug\net8.0\ERPServer.Domain.pdb
 C:\ERPApp\ERPServer\ERPServer.Domain\obj\Debug\net8.0\ref\ERPServer.Domain.dll
+C:\ERPApp\ERPServer\ERPServer.Domain\obj\Debug\net8.0\ERPServer.Domain.sourcelink.json
