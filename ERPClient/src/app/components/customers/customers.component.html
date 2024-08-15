@@ -36,12 +36,12 @@
                         <td>{{ customer.taxNumber }}</td>
                         <td>{{ customer.city }}</td>
                         <td>{{ customer.town }}</td>
-                        <td>{{ customer.fullAdress }}</td>
+                        <td>{{ customer.fullAddress }}</td>
                         <td>
                             <button class="btn btn-outline-warning btn-sm">
                                 <i class="fa-solid fa-edit"></i>
                             </button>
-                            <button class="btn btn-outline-danger btn-sm ms-1">
+                            <button class="btn btn-outline-danger btn-sm ml-5px">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </td>
@@ -71,21 +71,21 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Müşteri Adı</label>
-                        <input type="text" class="form-control" name="name" required minlength="3">
+                        <input type="text" class="form-control" name="name" [(ngModel)]="createModel.name" required minlength="3">
                         <div class="invalid-feedback">En az 3 karakter girmek zorunludur!</div>
                     </div>
                     <div class="form-group mt-2 row">
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Vergi Dairesi</label>
-                                <input type="text" class="form-control" name="taxDepartment" required minlength="3">
+                                <input type="text" class="form-control" name="taxDepartment" [(ngModel)]="createModel.taxDepartment" required minlength="3">
                                 <div class="invalid-feedback">En az 3 karakter girmek zorunludur!</div>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Vergi Numarası</label>
-                                <input type="text" class="form-control" name="taxNumber" required minlength="10" maxlength="11">
+                                <input type="text" class="form-control" name="taxNumber" [(ngModel)]="createModel.taxNumber" required minlength="10" maxlength="11">
                                 <div class="invalid-feedback">En az 10 karakter girmek zorunludur!</div>
                             </div>
                         </div>
@@ -94,21 +94,21 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Şehir</label>
-                                <input type="text" class="form-control" name="city" required minlength="3">
+                                <input type="text" class="form-control" name="city" [(ngModel)]="createModel.city" required minlength="3">
                                 <div class="invalid-feedback">En az 3 karakter girmek zorunludur!</div>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>İlçe</label>
-                                <input type="text" class="form-control" name="town" required minlength="3">
+                                <input type="text" class="form-control" name="town" [(ngModel)]="createModel.town" required minlength="3">
                                 <div class="invalid-feedback">En az 3 karakter girmek zorunludur!</div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Açık adres</label>
-                        <textarea class="form-control" name="fullAdress" rows="5" required minlength="3"></textarea>
+                        <textarea class="form-control" name="fullAdress" [(ngModel)]="createModel.fullAddress" rows="5" required minlength="3"></textarea>
                         <div class="invalid-feedback">En az 3 karakter girmek zorunludur!</div>
                     </div>
                 </div>

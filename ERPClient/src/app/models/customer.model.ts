@@ -5,5 +5,5 @@ export class CustomerModel{
     taxNumber: string = "";
     city: string = "";
     town: string = "";
-    fullAdress: string = "";
+    fullAddress: string = "";
 }

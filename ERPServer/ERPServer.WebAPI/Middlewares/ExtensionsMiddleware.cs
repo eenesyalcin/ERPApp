@@ -17,8 +17,8 @@ namespace ERPServer.WebAPI.Middlewares
                     {
                         UserName = "admin",
                         Email = "admin@admin.com",
-                        FirstName = "Taner",
-                        LastName = "Saydam",
+                        FirstName = "Enes",
+                        LastName = "YALÇIN",
                         EmailConfirmed = true
                     };
 

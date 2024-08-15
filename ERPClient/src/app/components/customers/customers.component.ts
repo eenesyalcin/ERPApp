@@ -39,10 +39,11 @@ export class CustomersComponent implements OnInit {
 
   create(form: NgForm){
     if (form.valid) {
-      this.http.post<string>("Customer/Create", this.createModel, (res) => {
+      this.http.post<string>("Customers/Create", this.createModel, (res) => {
         this.swal.callToast(res);
         this.createModel = new CustomerModel();
         this.createModalCloseBtn?.nativeElement.click();
+        this.getAll();
       });
     }
   }
