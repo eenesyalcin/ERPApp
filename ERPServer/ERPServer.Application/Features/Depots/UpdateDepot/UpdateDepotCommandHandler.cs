@@ -21,16 +21,6 @@ internal sealed class UpdateDepotCommandHandler(
             return Result<string>.Failure("Depo bulunamadı!");
         }
 
-        if (depot.Name != request.Name)
-        {
-            bool isNameExists = await depotRepository.AnyAsync(p => p.Name == request.Name, cancellationToken);
-
-            if (isNameExists)
-            {
-                return Result<string>.Failure("Bu isimde bir depo daha önce kaydedilmiş!");
-            }
-        }
-
         mapper.Map(request, depot);
         await unitOfWork.SaveChangesAsync(cancellationToken);
 

@@ -7,7 +7,7 @@ using TS.Result;
 
 namespace ERPServer.Application.Features.Customers.CreateCustomer;
 
-public sealed class CreateCustomerCommandHandler(
+internal sealed class CreateCustomerCommandHandler(
     ICustomerRepository customerRepository,
     IUnitOfWork unitOfWork,
     IMapper mapper) : IRequestHandler<CreateCustomerCommand, Result<string>>

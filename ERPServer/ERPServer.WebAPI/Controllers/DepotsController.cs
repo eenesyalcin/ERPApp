@@ -1,5 +1,4 @@
-﻿using ERPServer.Application.Features.Customers.GetAllCustomer;
-using ERPServer.Application.Features.Depots.CreateDepot;
+﻿using ERPServer.Application.Features.Depots.CreateDepot;
 using ERPServer.Application.Features.Depots.DeleteDepotById;
 using ERPServer.Application.Features.Depots.GetAllDepot;
 using ERPServer.Application.Features.Depots.UpdateDepot;
