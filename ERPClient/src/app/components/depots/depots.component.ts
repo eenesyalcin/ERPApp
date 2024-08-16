@@ -50,7 +50,7 @@ export class DepotsComponent implements OnInit {
   }
 
   deleteById(model: DepotModel){
-    this.swal.callSwal("Müşteri Sil", `${model.name} deposunu silmek istiyor musunuz?`, () => {
+    this.swal.callSwal("Depo Sil", `${model.name} deposunu silmek istiyor musunuz?`, () => {
       this.http.post<string>("Depots/DeleteById", {id: model.id}, (res) => {
         this.getAll();
         this.swal.callToast(res, "info");
