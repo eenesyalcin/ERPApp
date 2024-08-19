@@ -1,0 +1,9 @@
+﻿using ERPServer.Domain.Abstractions;
+
+namespace ERPServer.Domain.Entities;
+
+public sealed class Recipe : Entity
+{
+    public Guid ProductId { get; set; }
+    public List<RecipeDetail>? RecipeDetails { get; set; }
+}
