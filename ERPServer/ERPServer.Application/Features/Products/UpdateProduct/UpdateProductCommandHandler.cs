@@ -14,11 +14,11 @@ internal sealed class UpdateProductCommandHandler(
 {
     public async Task<Result<string>> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
     {
-        Product product = await productRepository.GetByExpressionAsync(p => p.Id == request.Id, cancellationToken);
+        Product product = await productRepository.GetByExpressionWithTrackingAsync(p => p.Id == request.Id, cancellationToken);
 
         if (product is null)
         {
-            return Result<string>.Failure("Ürün bulunamadı");
+            return Result<string>.Failure("Ürün bulunamadı!");
         }
 
         if (product.Name != request.Name)
@@ -33,6 +33,6 @@ internal sealed class UpdateProductCommandHandler(
         mapper.Map(request, product);
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return "Ürün başarıyla güncellendi";
+        return "Ürün başarıyla güncellendi.";
     }
 }
