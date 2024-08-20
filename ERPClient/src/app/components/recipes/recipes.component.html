@@ -28,6 +28,10 @@
                         <td>{{ $index + 1 }}</td>
                         <td>{{ recipe.product.name }}</td>
                         <td>
+                            <button routerLink="/recipe-details/{{ recipe.id }}" class="btn btn-dark btn-sm .ml-5px">
+                                <i class="fa-solid fa-eye me-1"></i>
+                                Detay
+                            </button>
                             <button (click)="deleteById(recipe)" class="btn btn-outline-danger btn-sm ml-5px">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
@@ -111,7 +115,7 @@
                                             <td>{{ $index + 1 }}</td>
                                             <td>{{ detail.product.name }}</td>
                                             <td>{{ detail.quantity }}</td>
-                                            <td>
+                                            <td>                                                
                                                 <button class="btn btn-outline-danger btn-sm" (click)="removeDetail($index)">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </button>
