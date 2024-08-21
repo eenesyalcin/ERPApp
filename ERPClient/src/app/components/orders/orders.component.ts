@@ -23,7 +23,8 @@ export class OrdersComponent {
   orders: OrderModel[] = [];
   customers: CustomerModel[] = [];
   products: ProductModel[] = [];
-  detail: OrderDetailModel = new OrderDetailModel();
+  createDetail: OrderDetailModel = new OrderDetailModel();
+  updateDetail: OrderDetailModel = new OrderDetailModel();
   search: string = "";
 
   @ViewChild("createModalCloseBtn") createModalCloseBtn: ElementRef<HTMLButtonElement> | undefined;
@@ -65,17 +66,31 @@ export class OrdersComponent {
   }
 
   addDetail(){
-    const product = this.products.find(p => p.id == this.detail.productId);
+    const product = this.products.find(p => p.id == this.createDetail.productId);
     if (product) {
-      this.detail.product = product;
+      this.createDetail.product = product;
     }
     debugger;
-    this.createModel.details.push(this.detail);
-    this.detail = new OrderDetailModel();
+    this.createModel.details.push(this.createDetail);
+    this.createDetail = new OrderDetailModel();
+  }
+
+  addUpdateDetail(){
+    const product = this.products.find(p => p.id == this.updateDetail.productId);
+    if (product) {
+      this.updateDetail.product = product;
+    }
+    debugger;
+    this.updateModel.details.push(this.updateDetail);
+    this.updateDetail = new OrderDetailModel();
   }
 
   removeDetail(index: number){
     this.createModel.details.splice(index, 1);
+  }
+
+  removeUpdateDetail(index: number){
+    this.updateModel.details.splice(index, 1);
   }
 
   create(form: NgForm){
