@@ -6,7 +6,7 @@ namespace ERPServer.Application.Features.Invoices.CreateInvoice;
 
 public sealed record CreateInvoiceCommand(
     Guid CustomerId,
-    int Type,
+    int TypeValue,
     DateOnly Date,
     string InvoiceNumber,
     List<InvoiceDetailDto> Details) : IRequest<Result<string>>;

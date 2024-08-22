@@ -3,24 +3,31 @@
     <br>
     <h1 class="text-center">{{ data.title }}</h1>
     <hr>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>ÜRÜN ADI</th>
-                <th>ÜRÜN ADEDİ</th>
-                <th>NOT</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (product of data.products; track product) {
+    @if (data.products.length) {
+        <table class="table table-hover">
+            <thead>
                 <tr>
-                    <td>{{ $index + 1 }}</td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.quantity }}</td>
-                    <td></td>
+                    <th>#</th>
+                    <th>ÜRÜN ADI</th>
+                    <th>ÜRÜN ADEDİ</th>
+                    <th>NOT</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @for (product of data.products; track product) {
+                    <tr>
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.quantity }}</td>
+                        <td></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }@else {
+        <h3 class="alert alert-success text-center">
+            Bu siparişin üretimi için yeterli malzeme var.
+        </h3>
+    }
+    
 </div>

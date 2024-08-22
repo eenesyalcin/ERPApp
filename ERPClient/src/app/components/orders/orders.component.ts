@@ -70,7 +70,6 @@ export class OrdersComponent {
     if (product) {
       this.createDetail.product = product;
     }
-    debugger;
     this.createModel.details.push(this.createDetail);
     this.createDetail = new OrderDetailModel();
   }
