@@ -1,6 +1,7 @@
 ﻿using ERPServer.Domain.Dtos;
 using ERPServer.Domain.Entities;
 using ERPServer.Domain.Repositories;
+using GenericRepository;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using TS.Result;
@@ -10,7 +11,8 @@ namespace ERPServer.Application.Features.Orders.RequirementsPlanningByOrderId;
 internal sealed class RequirementsPlanningByOrderIdCommandHandler(
     IOrderRepository orderRepository,
     IStockMovementRepository stockMovementRepository,
-    IRecipeRepository recipeRepository) : IRequestHandler<RequirementsPlanningByOrderIdCommand, Result<RequirementsPlanningByOrderIdCommandResponse>>
+    IRecipeRepository recipeRepository,
+    IUnitOfWork unitOfWork) : IRequestHandler<RequirementsPlanningByOrderIdCommand, Result<RequirementsPlanningByOrderIdCommandResponse>>
 {
     public async Task<Result<RequirementsPlanningByOrderIdCommandResponse>> Handle(RequirementsPlanningByOrderIdCommand request, CancellationToken cancellationToken)
     {
@@ -98,6 +100,10 @@ internal sealed class RequirementsPlanningByOrderIdCommandHandler(
             Name = g.First().Name,
             Quantity = g.Sum(item => item.Quantity)
         }).ToList();
+
+        order.Status = OrderStatusEnum.RequirementsPlanWorked;
+        orderRepository.Update(order);
+        await unitOfWork.SaveChangesAsync(cancellationToken);
 
         return new RequirementsPlanningByOrderIdCommandResponse(
             DateOnly.FromDateTime(DateTime.Now), 

@@ -12,7 +12,7 @@ internal sealed class DeleteProductByIdCommandHandler(
 {
     public async Task<Result<string>> Handle(DeleteProductByIdCommand request, CancellationToken cancellationToken)
     {
-        Product product = await productRepository.GetByExpressionAsync(p => p.Id == request.Id);
+        Product product = await productRepository.GetByExpressionAsync(p => p.Id == request.Id, cancellationToken);
 
         if (product is null)
         {

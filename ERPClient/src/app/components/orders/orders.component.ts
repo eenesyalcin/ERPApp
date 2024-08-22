@@ -80,7 +80,6 @@ export class OrdersComponent {
     if (product) {
       this.updateDetail.product = product;
     }
-    debugger;
     this.updateModel.details.push(this.updateDetail);
     this.updateDetail = new OrderDetailModel();
   }

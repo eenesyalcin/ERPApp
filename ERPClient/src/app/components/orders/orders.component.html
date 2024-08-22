@@ -36,7 +36,7 @@
                         <td>{{ order.deliveryDate | date: 'dd.MM.yyyy' }}</td>
                         <td>{{ order.status.name }}</td>
                         <td>
-                            <a class="btn btn-outline-dark btn-sms" href="requirements-planning/{{ order.id }}" target="_blank">
+                            <a class="btn btn-outline-dark btn-sm" href="requirements-planning/{{ order.id }}" target="_blank" (click)="getAll()">
                                 <i class="fa-solid fa-list"></i>
                                 İhtiyaç Planlaması Çalıştır
                             </a>
