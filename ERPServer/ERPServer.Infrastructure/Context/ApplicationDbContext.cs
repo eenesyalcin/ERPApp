@@ -22,6 +22,7 @@ namespace ERPServer.Infrastructure.Context
         public DbSet<StockMovement> stockMovements { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
+        public DbSet<Production> Productions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
