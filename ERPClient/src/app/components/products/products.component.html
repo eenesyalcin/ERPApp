@@ -20,6 +20,7 @@
                         <th>#</th>
                         <th>ÜRÜN ADI</th>
                         <th>ÜRÜN TİPİ</th>
+                        <th>STOK ADEDİ</th>
                         <th>İŞLEMLER</th>
                     </tr>
                 </thead>
@@ -29,6 +30,7 @@
                         <td>{{ $index + 1 }}</td>
                         <td>{{ product.name }}</td>
                         <td>{{ product.type.name }}</td>
+                        <td>{{ product.stock }}</td>
                         <td>
                             <button data-toggle="modal" data-target="#updateModal" (click)="get(product)" class="btn btn-outline-warning btn-sm">
                                 <i class="fa-solid fa-edit"></i>
