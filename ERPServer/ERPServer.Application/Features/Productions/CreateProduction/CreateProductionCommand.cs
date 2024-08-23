@@ -5,5 +5,5 @@ namespace ERPServer.Application.Features.Productions.CreateProduction;
 
 public sealed record CreateProductionCommand(
     Guid ProductId,
-    Guid DeptId,
+    Guid DepotId,
     decimal Quantity) : IRequest<Result<string>>;

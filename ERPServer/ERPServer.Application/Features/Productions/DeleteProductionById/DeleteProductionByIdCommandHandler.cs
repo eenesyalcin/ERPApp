@@ -27,6 +27,6 @@ internal sealed class DeleteProductionByIdCommandHandler(
         productionRepository.Delete(production);
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return "Üretim başarıyla tamamlandı.";
+        return "Üretim başarıyla silindi.";
     }
 }

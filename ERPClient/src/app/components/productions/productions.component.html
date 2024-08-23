@@ -1,0 +1,101 @@
+<app-blank pageName="Üretimler" [routes]="['Üretimler']">
+    <app-section sectionTitle="Ürertim Listesi">
+        <div class="form-group row">
+            <div class="col-9">
+                <button class="btn btn-dark" data-toggle="modal" data-target="#createModal">
+                    <i class="fa-solid fa-plus me-1"></i>
+                    Üretim Yap
+                </button>
+            </div>
+
+            <div class="col-3">
+                <input type="search" [(ngModel)]="search" class="form-control" placeholder="ARA...">
+            </div>
+        </div>
+
+        <div class="form-group mt-2">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>TARİH</th>
+                        <th>ÜRÜN ADI</th>
+                        <th>DEPO ADI</th>
+                        <th>ADET</th>
+                        <th>İŞLEMLER</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (production of productions | production: search; track production) {
+                    <tr>
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ production.createdAt | date: 'dd.MM.yyyy HH:mm' }}</td>
+                        <td>{{ production.product.name }}</td>
+                        <td>{{ production.depot.name }}</td>
+                        <td>{{ production.quantity }}</td>
+                        <td>
+                            <button (click)="deleteById(production)" class="btn btn-outline-danger btn-sm ml-5px">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </app-section>
+</app-blank>
+
+
+
+
+
+<!-- CREATE MODAL -->
+<div class="modal fade" id="createModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5"><b>ÜRETİM FORMU</b></h1>
+                <button type="button" #createModalCloseBtn class="btn btn-outline-danger" data-dismiss="modal">
+                    <i class="fa-solid fa-x"></i>
+                </button>
+            </div>
+            <form formValidate #createForm="ngForm" autocomplete="off" (ngSubmit)="create(createForm)">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Depo</label>
+                        <select class="form-control" name="depotId" [(ngModel)]="createModel.depotId" required>
+                            @for (depot of depots; track depot) {
+                                <option [value]="depot.id">{{ depot.name }}</option>
+                            }
+                        </select>
+                        <div class="invalid-feedback">Depo seçmek zorunludur!</div>
+                    </div>
+                    <div class="form-group mt-2 row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Ürün</label>
+                                <select class="form-control" name="productId" [(ngModel)]="createModel.productId" required>
+                                    @for (product of products; track product) {
+                                        <option [value]="product.id">{{ product.name }}</option>
+                                    }
+                                </select>
+                                <div class="invalid-feedback">Ürün seçmek zorunludur!</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Adet</label>
+                                <input class="form-control" name="quantity" [(ngModel)]="createModel.quantity" required>
+                                <div class="invalid-feedback">En az 3 karakter girmek zorunludur!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-dark w-100">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
