@@ -34,18 +34,20 @@
                         <td>{{ order.number }}</td>
                         <td>{{ order.customer.name }}</td>
                         <td>{{ order.deliveryDate | date: 'dd.MM.yyyy' }}</td>
-                        <td>{{ order.status.name }}</td>
+                        <td [ngClass]="setStatusClass(order.status.value)">{{ order.status.name }}</td>
                         <td>
-                            <a class="btn btn-outline-dark btn-sm" href="requirements-planning/{{ order.id }}" target="_blank" (click)="getAll()">
-                                <i class="fa-solid fa-list"></i>
-                                İhtiyaç Planlaması Çalıştır
-                            </a>
-                            <button data-toggle="modal" data-target="#updateModal" (click)="get(order)" class="btn btn-outline-warning btn-sm ml-5px">
-                                <i class="fa-solid fa-edit"></i>
-                            </button>
-                            <button (click)="deleteById(order)" class="btn btn-outline-danger btn-sm ml-5px ml-5px">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
+                            @if (order.status.value < 3) {
+                                <a class="btn btn-outline-dark btn-sm" href="requirements-planning/{{ order.id }}" target="_blank" (click)="getAll()">
+                                    <i class="fa-solid fa-list"></i>
+                                    İhtiyaç Planlaması Çalıştır
+                                </a>
+                                <button data-toggle="modal" data-target="#updateModal" (click)="get(order)" class="btn btn-outline-warning btn-sm ml-5px">
+                                    <i class="fa-solid fa-edit"></i>
+                                </button>
+                                <button (click)="deleteById(order)" class="btn btn-outline-danger btn-sm ml-5px ml-5px">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            }
                         </td>
                     </tr>
                     }

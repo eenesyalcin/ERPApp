@@ -76,13 +76,24 @@
                     </div>
                     <div class="form-group">
                         <label>Müşteri</label>
-                        <select class="form-control" name="customer" [(ngModel)]="createModel.customerId" required>
+                        <select class="form-control" name="customer" [(ngModel)]="createModel.customerId" (change)="setSelectedCustomerOrders()" required>
                             @for (customer of customers; track customer) {
                             <option [value]="customer.id">{{ customer.name }}</option>
                             }
                         </select>
                         <div class="invalid-feedback">Müşteri seçmek zorunludur!</div>
                     </div>
+                    @if (type == 2) {
+                        <div class="form-group">
+                            <label>Sipariş</label>
+                            <select class="form-control" name="customer" [(ngModel)]="createModel.orderId" required>
+                                @for (customerOrder of customerOrders; track customerOrder) {
+                                <option [value]="customerOrder.id">{{ customerOrder.number }}</option>
+                                }
+                            </select>
+                            <div class="invalid-feedback">Sipariş seçmek zorunludur!</div>
+                        </div>
+                    }
                     <hr>
                     <div class="form-group mt-2">
                         <div class="row">
@@ -206,13 +217,8 @@
                     </div>
                     <div class="form-group">
                         <label>Müşteri</label>
-                        <select class="form-control" name="updateCustomer" [(ngModel)]="updateModel.customerId"
-                            required>
-                            @for (customer of customers; track customer) {
-                            <option [value]="customer.id">{{ customer.name }}</option>
-                            }
-                        </select>
-                        <div class="invalid-feedback">Müşteri seçmek zorunludur!</div>
+                        <br>
+                        <span>{{ updateModel.customer.name }}</span>
                     </div>
                     <hr>
                     <div class="form-group mt-2">

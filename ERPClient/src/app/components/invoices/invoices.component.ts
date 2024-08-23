@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { SharedModule } from '../../modules/shared.module';
 import { InvoicePipe } from '../../pipes/invoice.pipe';
+import { OrderModel } from '../../models/order.model';
 
 @Component({
   selector: 'app-invoices',
@@ -31,6 +32,8 @@ export class InvoicesComponent {
   search: string = "";
   type: number = 1;
   typeName: string = "Alış";
+  orders: OrderModel[] = [];
+  customerOrders: OrderModel[] = [];
 
   @ViewChild("createModalCloseBtn") createModalCloseBtn: ElementRef<HTMLButtonElement> | undefined;
   @ViewChild("updateModalCloseBtn") updateModalCloseBtn: ElementRef<HTMLButtonElement> | undefined;
@@ -54,6 +57,7 @@ export class InvoicesComponent {
       this.getAllProducts();
       this.getAllCustomers();
       this.getAllDepots();
+      this.getAllOrders();
     });
     
   }
@@ -79,6 +83,12 @@ export class InvoicesComponent {
   getAllDepots(){
     this.http.post<DepotModel[]>("Depots/GetAll", {}, (res) => {
       this.depots = res;
+    });
+  }
+
+  getAllOrders(){
+    this.http.post<OrderModel[]>("Orders/GetAll", {}, (res) => {
+      this.orders = res.filter(p => p.status.value < 3);
     });
   }
 
@@ -150,6 +160,10 @@ export class InvoicesComponent {
         this.getAll();
       });
     }
+  }
+
+  setSelectedCustomerOrders(){
+    this.customerOrders = this.orders.filter(p => p.customerId == this.createModel.customerId);
   }
 
 }

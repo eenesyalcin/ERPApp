@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ERPServer.Domain.Dtos;
 using ERPServer.Domain.Entities;
 using ERPServer.Domain.Repositories;
 using GenericRepository;
